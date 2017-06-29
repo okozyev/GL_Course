@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as ec
 from time import sleep
 
 def test_task_6():
@@ -49,11 +52,33 @@ def test_task_6():
     driver.find_element_by_xpath("//input[@name='dim_z']").send_keys("30")
 
     # inserting image
-    //приплыли
+    driver.find_element_by_xpath("//input[@name='new_images[]']").send_keys("C:\\_all_lib\\ver3\\test_4\\01_cat_carrier.jpg")
+    driver.find_element_by_xpath("//button[@value='Save']").click()
+
+    # checking presence
+    WebDriverWait(driver, 5).until(ec.element_to_be_clickable(By.XPATH, ("//main[contains(.,'cat_carrier')]")))
 
 
+# def test_check(xpath):
+#     try:
+#        webdriver.find_element_by_xpath("//main[contains(.,'cat_carrier')]")
+#     except NoSuchElementException:
+#        return False
+#     return True
 
-    sleep (5)
+# def test_check_exists_by_xpath(xpath):
+#
+#     try:
+#         webdriver.find_element_by_xpath("//a[contains(.,'cat_carrier')]")
+#     except NoSuchElementException:
+#         return self.assertTrue(False)
+#     return True
+
+    sleep(5)
+    #
+    # def check_exists_by_xpath(xpath):
+    #     return len(webdriver.find_elements_by_xpath(xpath)) > 0
 
 # http://software-testing.ru/forum/index.php?/topic/17746-podskazhite-po-xpath/
 # http://software-testing.ru/forum/index.php?/topic/26091-zagruzit-izobrazhenie/
+# http://software-testing.ru/forum/index.php?/topic/32621-python-selenium-proverit-est-li-element-na-stranitce/
