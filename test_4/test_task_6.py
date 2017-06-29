@@ -75,7 +75,7 @@ def test_task_6():
 #     return True
 
     sleep(5)
-    #
+
     # def check_exists_by_xpath(xpath):
     #     return len(webdriver.find_elements_by_xpath(xpath)) > 0
 
