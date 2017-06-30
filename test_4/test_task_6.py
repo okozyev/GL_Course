@@ -1,9 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
-from time import sleep
 
 def test_task_6():
     #   Select Browser (del '#')
@@ -30,9 +28,8 @@ def test_task_6():
     driver.find_element_by_xpath("//label[contains(., ' Enabled')]").click()
     driver.find_element_by_xpath("//label[contains(., ' Unisex')]").click()
 
-    # fucking year validations - ask somebody
-    # driver.find_element_by_xpath("//label[contains(., ' date_valid_from']").send_keys("01012000")
-    # driver.find_element_by_xpath("//label[contains(., ' date_valid_to']").send_keys("01012020")
+    driver.find_element_by_xpath("//input[@name='date_valid_from']").send_keys("20000101")
+    driver.find_element_by_xpath("//input[@name='date_valid_to']").send_keys("20200101")
 
     driver.find_element_by_xpath("//input[@name='code']").send_keys("005")
     driver.find_element_by_xpath("//input[@name='name[en]']").send_keys("cat_carrier")
@@ -56,28 +53,9 @@ def test_task_6():
     driver.find_element_by_xpath("//button[@value='Save']").click()
 
     # checking presence
-    WebDriverWait(driver, 5).until(ec.element_to_be_clickable(By.XPATH, ("//main[contains(.,'cat_carrier')]")))
+    WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, ("//./a[contains(.,'cat_carrier')]"))))
 
-
-# def test_check(xpath):
-#     try:
-#        webdriver.find_element_by_xpath("//main[contains(.,'cat_carrier')]")
-#     except NoSuchElementException:
-#        return False
-#     return True
-
-# def test_check_exists_by_xpath(xpath):
-#
-#     try:
-#         webdriver.find_element_by_xpath("//a[contains(.,'cat_carrier')]")
-#     except NoSuchElementException:
-#         return self.assertTrue(False)
-#     return True
-
-    sleep(5)
-
-    # def check_exists_by_xpath(xpath):
-    #     return len(webdriver.find_elements_by_xpath(xpath)) > 0
+    driver.quit()
 
 # http://software-testing.ru/forum/index.php?/topic/17746-podskazhite-po-xpath/
 # http://software-testing.ru/forum/index.php?/topic/26091-zagruzit-izobrazhenie/
