@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
+import os
 
 def test_task_6():
     #   Select Browser (del '#')
@@ -12,9 +13,7 @@ def test_task_6():
 
     driver.get("http://localhost/litecart/admin/")
 
-    driver.find_element_by_name("username").click()
     driver.find_element_by_name("username").send_keys("admin")
-    driver.find_element_by_name("password").click()
     driver.find_element_by_name("password").send_keys("admin")
     driver.find_element_by_name("login").submit()
 
@@ -49,7 +48,8 @@ def test_task_6():
     driver.find_element_by_xpath("//input[@name='dim_z']").send_keys("30")
 
     # inserting image
-    driver.find_element_by_xpath("//input[@name='new_images[]']").send_keys("C:\\_all_lib\\ver3\\test_4\\01_cat_carrier.jpg")
+    # driver.find_element_by_xpath("//input[@name='new_images[]']").send_keys("C:\\_all_lib\\ver3\\test_4\\01_cat_carrier.jpg")
+    driver.find_element_by_xpath("//input[@name='new_images[]']").send_keys(os.getcwd() + "/01_cat_carrier.jpg")
     driver.find_element_by_xpath("//button[@value='Save']").click()
 
     # checking presence
