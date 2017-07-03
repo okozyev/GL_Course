@@ -5,8 +5,8 @@ def test_task_5():
 
 #   Select Browser (del '#')
 
-    driver = webdriver.Chrome()
-    # driver = webdriver.Firefox()
+    # driver = webdriver.Chrome()
+    driver = webdriver.Firefox()
     # driver = webdriver.Ie()
 
     driver.implicitly_wait(5)
