@@ -4,7 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_loginform():
+def test_task_2():
     driver = webdriver.Chrome()
     driver.get("http://localhost/litecart/admin/")
     driver.find_element_by_name("username").click()
