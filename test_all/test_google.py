@@ -4,6 +4,9 @@ from time import sleep
 
 def test_google():
     driver = webdriver.Chrome()
+    # driver = webdriver.Firefox
+    # driver = webdriver.Ie
+
     driver.get("https://www.google.com")
     driver.find_element_by_name("q").send_keys("lololo")
     driver.find_element_by_name("btnG").click()
