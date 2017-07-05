@@ -1,6 +1,8 @@
 from time import sleep
-
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from utils import wait_for_element
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 from page_objects.user_side.cart_page import CartPage
@@ -31,7 +33,7 @@ def test_task_7_10():
 
     # removing products block
     cart_page.empty_cart()
-    products_count = cart_page.get_products_count()
+    # products_count = cart_page.get_products_count()
 
 
     # for counter in range(2, 0, -1):
