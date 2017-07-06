@@ -13,3 +13,6 @@ class LiteCart(object):
         self.driver.get(self.main_url)
         self.driver.maximize_window()
         self.driver.implicitly_wait(5)
+
+    def quit(self):
+        self.driver.quit()

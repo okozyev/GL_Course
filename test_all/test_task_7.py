@@ -15,7 +15,6 @@ def products_in_cart(xpath):
 
 def test_task_7():
 
-
     # Pages init
 
     campaign_products_tab_locator = '[href="#campaign-products"]'
@@ -33,7 +32,7 @@ def test_task_7():
     cart_title_locator = '#cart .title'
 
     remove_buttons_locator = 'button[class="btn btn-danger"]'
-    back_button_locator = '.cart wrapper'
+    back_button_locator = '[href="http://localhost/litecart/en/"]'
 
 
     click_on_campaign_products_tab = driver.find_element_by_css_selector(campaign_products_tab_locator).click()
@@ -58,7 +57,7 @@ def test_task_7():
 
     # close_product_item_page()
 
-    get_cart_items_counter = driver.find_element_by_css_selector(cart_items_count_locator).get_attribute('quantity')
+    # get_cart_items_counter = driver.find_element_by_css_selector(cart_items_count_locator).get_attribute('quantity')
 
 
     # return get_cart_items_counter.text
@@ -70,12 +69,19 @@ def test_task_7():
     open_cart = driver.find_element_by_css_selector(cart_title_locator).click()
 
     try:
-        WebDriverWait(driver, 2).until(ec.presence_of_element_located((By.XPATH, ".//div[@class='loader-wrapper']")))
+        WebDriverWait(driver, 1).until(ec.presence_of_element_located((By.XPATH, ".//div[@class='loader-wrapper']")))
     finally:
         while products_in_cart(".//*[@id='box-checkout-cart']//tbody/tr") > 0:
             try:
-                WebDriverWait(driver, 2).until(ec.presence_of_element_located((By.XPATH, ".//div[@class='loader-wrapper']")))
+                WebDriverWait(driver, 1).until(ec.presence_of_element_located((By.XPATH, ".//div[@class='loader-wrapper']")))
             except:
                 driver.find_element_by_css_selector(remove_buttons_locator).click()
 
-    # press_back = driver.find_element_by_css_selector(back_button_locator).click()
+    press_back = driver.find_element_by_css_selector(back_button_locator).click()
+
+    # get_cart_items_counter = driver.find_element_by_css_selector(cart_items_count_locator).get_attribute('text')
+    print("Good job, padavan. Confident should You be")
+
+    driver.quit()
+
+
