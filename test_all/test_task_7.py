@@ -1,4 +1,3 @@
-from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
@@ -65,7 +64,6 @@ def add_3rd_item_in_cart():
     click_on_big_size_item = driver.find_element_by_css_selector(size_selection_large_item_locator).click()
     finishing_add_new_product()
 
-
 def test_task_7():
     # locators
     cart_items_count_locator = '.quantity'
@@ -102,5 +100,3 @@ def test_task_7():
     print("Good job, Padavan. Confident more should now You be")
 
     driver.quit()
-
-
